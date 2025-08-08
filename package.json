@@ -2,9 +2,11 @@
   "name": "manual-instrumentation-js-playground",
   "packageManager": "yarn@4.9.2",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "ddtest": "env $(cat .env) NODE_OPTIONS=\"-r $(pwd)/.pnp.cjs -r dd-trace/ci/init\" yarn test"
   },
   "devDependencies": {
+    "dd-trace": "^5.62.0",
     "jest": "^30.0.5"
   }
 }
