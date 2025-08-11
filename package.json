@@ -3,10 +3,11 @@
   "packageManager": "yarn@4.9.2",
   "scripts": {
     "test": "jest",
-    "ddtest": "env $(cat .env) NODE_OPTIONS=\"-r $(pwd)/.pnp.cjs -r dd-trace/ci/init\" yarn test"
+    "ddtest": "env $(cat .env) NODE_OPTIONS=\"-r $(pwd)/.pnp.cjs -r dd-trace/ci/init\" yarn test",
+    "ddtest:inspect": "env $(cat .env) NODE_OPTIONS=\"-r $(pwd)/.pnp.cjs -r dd-trace/ci/init --inspect-brk\" yarn test"
   },
   "devDependencies": {
-    "dd-trace": "^5.62.0",
+    "dd-trace": "portal:../../dd-tracers/dd-trace-js",
     "jest": "^30.0.5"
   }
 }
