@@ -2,9 +2,15 @@
   "name": "manual-instrumentation-js-playground",
   "packageManager": "yarn@4.9.2",
   "scripts": {
-    "test": "jest",
-    "ddtest": "env $(cat .env) NODE_OPTIONS=\"-r $(pwd)/.pnp.cjs -r dd-trace/ci/init\" yarn test",
-    "ddtest:inspect": "env $(cat .env) NODE_OPTIONS=\"-r $(pwd)/.pnp.cjs -r dd-trace/ci/init --inspect-brk\" yarn test"
+    "test:unit": "jest sum.test.js",
+    "test:integration": "SUM_SERVER_URL=http://localhost:3001 jest sum.integration",
+    "ddtest:unit": "env $(cat .env) NODE_OPTIONS=\"-r $(pwd)/.pnp.cjs -r dd-trace/ci/init\" yarn test:unit",
+    "ddtest:integration": "env $(cat .env) NODE_OPTIONS=\"-r $(pwd)/.pnp.cjs -r dd-trace/ci/init\" yarn test:integration",
+    "ddtest:inspect": "env $(cat .env) NODE_OPTIONS=\"-r $(pwd)/.pnp.cjs -r dd-trace/ci/init --inspect-brk\" yarn test",
+    "start:backend": "env $(cat .env.server) node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
   },
   "devDependencies": {
     "dd-trace": "portal:../../dd-tracers/dd-trace-js",
