@@ -1,3 +1,8 @@
+require('dd-trace').init({
+    logInjection: true,
+    env: "development",
+    service: "sum-service-tests"
+})
 const sum = require("./sum");
 
 describe("sum integration with express server", () => {
