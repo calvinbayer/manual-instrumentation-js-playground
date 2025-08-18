@@ -7,7 +7,8 @@
     "ddtest:unit": "env $(cat .env) NODE_OPTIONS=\"-r $(pwd)/.pnp.cjs -r dd-trace/ci/init\" yarn test:unit",
     "ddtest:integration": "env $(cat .env) NODE_OPTIONS=\"-r $(pwd)/.pnp.cjs -r dd-trace/ci/init\" yarn test:integration",
     "ddtest:inspect": "env $(cat .env) NODE_OPTIONS=\"-r $(pwd)/.pnp.cjs -r dd-trace/ci/init --inspect-brk\" yarn test",
-    "start:backend": "env $(cat .env.server) node src/server.js"
+    "start:backend": "env $(cat .env.server) node src/server.js",
+    "test:without-cli": "node run-tests.js"
   },
   "dependencies": {
     "dd-trace": "^5.62.0",
