@@ -10,10 +10,10 @@
     "start:backend": "env $(cat .env.server) node src/server.js"
   },
   "dependencies": {
+    "dd-trace": "^5.62.0",
     "express": "^4.19.2"
   },
   "devDependencies": {
-    "dd-trace": "portal:../../dd-tracers/dd-trace-js",
     "jest": "^30.0.5"
   }
 }
