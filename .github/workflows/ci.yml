@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: ["*"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Configure Datadog Test Optimization
+        uses: datadog/test-visibility-github-action@v2
+        with:
+          languages: js
+          api_key: ${{secrets.DD_API_KEY}}
+          site: datadoghq.com
+      - name: Run tests
+        run: npx jest
+        env:
+          NODE_OPTIONS: -r ${{env.DD_TRACE_PACKAGE}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
