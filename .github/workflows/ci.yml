@@ -20,6 +20,7 @@ jobs:
           api_key: ${{secrets.DD_API_KEY}}
           site: datadoghq.com
       - run: echo ${{ job.check_run_id }}
+      - run: node -e "console.log(JSON.stringify(process.env, null, 2))"
       - name: Run tests
         run: npx jest
         env:
